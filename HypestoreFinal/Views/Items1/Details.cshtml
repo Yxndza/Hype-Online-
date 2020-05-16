@@ -1,0 +1,146 @@
+﻿@model HypestoreFinal.Models.Item
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Item</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Categories.Category_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categories.Category_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.suppliers.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.suppliers.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ItemId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Brand)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Brand)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.size)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.size)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.color)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SkuNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SkuNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReOrder_Level)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReOrder_Level)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuantityInStock)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuantityInStock)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReOrder_Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReOrder_Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReOrder_Percent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReOrder_Percent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isDiscontinued)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isDiscontinued)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ItemCode }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

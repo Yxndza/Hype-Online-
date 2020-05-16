@@ -1,0 +1,128 @@
+﻿@model IEnumerable<HypestoreFinal.Models.Item>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Categories.Category_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.suppliers.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Brand)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.size)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.color)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SkuNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReOrder_Level)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuantityInStock)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReOrder_Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReOrder_Percent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.isDiscontinued)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Categories.Category_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.suppliers.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ItemId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Brand)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.size)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SkuNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReOrder_Level)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuantityInStock)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReOrder_Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReOrder_Percent)
+        </td>
+        <td>
+            @if (item.Image != null)
+            {
+                var base64 = Convert.ToBase64String(item.Image);
+                var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                <img src="@imgSrc" width="50" height="60" />
+            }
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.isDiscontinued)
+        </td>*@
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ItemCode }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ItemCode }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ItemCode })
+        </td>
+    </tr>
+}
+
+</table>

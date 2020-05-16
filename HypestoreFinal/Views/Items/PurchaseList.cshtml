@@ -1,0 +1,102 @@
+﻿
+@{
+    ViewBag.Title = "PurchaseList";
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+}
+
+<div class="col-md-6">
+
+    <b>Items in this Purchase</b>
+    <table class="table" style="column-width:100px">
+        <tr>
+            <th style="width:1000px">
+                Image
+            </th>
+            <th style="width:100000px">
+                Item
+            </th>
+            <th style="width:100000px">
+                ReOrder Quantity
+            </th>
+            <th>
+                Price
+            </th>
+            <th style="width:100000px">
+                Price
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Price
+            </th>
+        </tr>
+
+        @foreach (var item in (List<HypestoreFinal.Models.PurchaseOrderItem>)ViewBag.Items)
+        {
+        <tr>
+            <td>
+                @*@if (item.Item.Image != null)
+                {
+                    var base64 = Convert.ToBase64String(item.Item.Image);
+                    var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
+                    <img src="@imgSrc" width="60" height="70" />
+                }*@
+                @*@if (Model.Image != null)
+            {
+                var base64 = Convert.ToBase64String(Model.Image);
+                var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                <img src="@imgSrc" width="50" height="60" />
+            }*@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Item.Name)
+            </td>
+            <td style="width:10000px">
+                @*@Html.DisplayFor(modelItem => item.SupplierId)*@
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                R @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                R @Html.DisplayFor(modelItem => item.purchaseID)
+            </td>
+            <td>
+                R @Html.DisplayFor(modelItem => item.itemID)
+            </td>
+            <td>
+                R @Html.DisplayFor(modelItem => item.PurchaseOrder.PurchaseDate)
+            </td>
+        </tr>
+        }
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                R @ViewBag.Total
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <a href="@Url.Action("Index", "Shopping")" class="btn btn-default"><i class="fa fa-arrow-left"></i> Back to shopping</a>
+            </td>
+            @*<td>
+                <a href="@Url.Action("SecurePayment", "Shopping", new { id = order.OrderID})" class="btn btn-success"><i class="fa fa-lock"></i> Secure Payment</a>
+            </td>*@
+        </tr>
+    </table>
+
+</div>
+

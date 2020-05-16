@@ -1,0 +1,27 @@
+﻿@model IEnumerable<HypestoreFinal.Models.UserViewModel>
+@{
+    ViewBag.Title = "Users";
+}
+<h2>Users </h2>
+
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>
+            Username
+        </th>
+    </tr>
+
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>
+                @user.Username
+            </td>
+
+        </tr>
+    }
+</table>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,185 @@
+﻿@model HypestoreFinal.Models.Item
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ItemEntity</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Categories.Category_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categories.Category_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Mark_Up)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mark_Up)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReOrder_Level)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReOrder_Level)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Quantity_In_Stock)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity_In_Stock)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QTY_Received)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QTY_Received)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReOrder_Percent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReOrder_Percent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.Image)*@
+            @if (Model.Image != null)
+            {
+                var base64 = Convert.ToBase64String(Model.Image);
+                var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                <img src="@imgSrc" width="250" height="260" />
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Med_Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Med_Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Batch_Num)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Batch_Num)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Batch_Qty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Batch_Qty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Qty_Per_batch)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Qty_Per_batch)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Best_Before_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Best_Before_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Med_Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Med_Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isDiscontinued)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isDiscontinued)
+        </dd>*@
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Discontinue_Reason)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Discontinue_Reason)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Discontinue_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Discontinue_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_Modified)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_Modified)
+        </dd>*@
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ItemCode }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

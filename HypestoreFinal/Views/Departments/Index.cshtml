@@ -1,0 +1,46 @@
+﻿@using HypestoreFinal.Helpers
+@model IEnumerable<HypestoreFinal.Models.Department>
+
+@{
+    ViewBag.Title = "Index";
+    //Layout = "~/Views/Shared/_LayoutDash.cshtml";
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<br />
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Department_Name)
+        </th>
+        <th>
+            <div class="pull-right">
+                @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-plus'></span>", "Add New Department", "Create", "Departments", routeValues: null, htmlAttributes: new { @class = "btn btn-primary" })
+            </div>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department_Name)
+            </td>
+            <td>
+                <div class="pull-right">
+                    @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-pencil'></span>", "Edit", "Edit", "Departments", routeValues: new { id = item.Department_ID }, htmlAttributes: new { data_modal = "", @class = "btn btn-default" })
+                    &nbsp;
+                    @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-folder-open'></span>", "Details", "Details", "Departments", routeValues: new { id = item.Department_ID }, htmlAttributes: new { data_modal = "", @class = "btn btn-default" })
+                    &nbsp;
+                    @Html.NoEncodeActionLink("<span class='glyphicon glyphicon-trash'></span>", "Delete", "Delete", "Departments", routeValues: new { id = item.Department_ID }, htmlAttributes: new { data_modal = "", @class = "btn btn-danger" })
+
+                </div>
+            </td>
+        </tr>
+    }
+
+</table>
+

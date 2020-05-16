@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Stock Levels";
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+}
+
+<h2>Stock Levels</h2>
+
+<table>
+    <tr>
+        @{Html.RenderAction("BelowReOrderLevel", "Items");}
+    </tr>
+    <tr>
+        @{Html.RenderAction("OutOfStock", "Items");}
+    </tr>
+</table>

@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    @*<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!-- Social Footer, Colour Matching Icons -->
+    <!-- Include Font Awesome Stylesheet in Header -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <!-- // -->
+    <!------ Include the above in your HEAD tag ---------->*@
+    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.css" @*href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"*@>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HYPE - @ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <p class="site-title">
+                    <a href="@Url.Action("Index", "Home")" style="display:block; padding:4px ">
+                        <img width="110" height="80" src="~/Images/hype.jpg" alt="" />
+                    </a>
+                </p>
+            </div>
+                      <div class="navbar-collapse collapse">
+                          <ul class="nav navbar-nav">
+                              @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                              {
+                                  <li>@Html.ActionLink("DASHBOARD", "Index", "DashBoard")</li>
+                              }
+                              @*<li><a href="@Url.Action("Index","Shopping")"> <i class="fa fa-shopping-bag"></i> Shop</a></li>*@
+                              <li><a href="@Url.Action("ShoppingCart","Shopping")"> <i class="fa fa-shopping-cart"></i> My Cart (@Html.Action(actionName: "countCartItems", controllerName: "Shopping"))</a></li>
+                              <li>@Html.ActionLink("BRANDS", "Index", "Home")</li>
+                              <li>@Html.ActionLink("SHOP NOW", "Index", "Shopping")</li>
+                              <li>@Html.ActionLink("EXCLUSIVE", "About", "Home")</li>
+                              <li>@Html.ActionLink("SNEAKERS", "Contact", "Home")</li>
+                              <li>@Html.ActionLink("BLOG", "Contact", "Home")</li>
+                          </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <div id="footer" class="background-grey" style="background-color:#171d1d">
+                <div class="container">
+                    <div class="row">
+                        <!-- Call to action -->
+                        <ul class="list-unstyled list-inline text-right py-2">
+                            <li class="list-inline-item">
+                                <label>SIGN UP FOR OUR NEWSLETTER</label>
+                            </li>
+                            <li class="list-inline-item">
+                                <input type="text" class="form-control form-control-sm" placeholder="Enter your email address" aria-label="Your email" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                </div>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#!" class="btn btn-info" style="background-color:darkslategray; border-color:slategrey;">Sign up!</a>
+                            </li>
+                        </ul>
+                        <!-- Call to action -->
+                        <hr style="border-color:darkslategrey;" />
+
+                        <!-- Footer Links -->
+                        <div class="container text-left text-md-left">
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h5><b>LOCATE OUR STORE</b></h5>
+                                    <p>hyperlink to Google maps?...</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <ul>
+                                        <li>@Html.ActionLink("About HYPE", "About", "Home")</li>
+                                        <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
+                                        <li>@Html.ActionLink("Track Your Order", "Track", "OrderStatus")</li>
+                                        <li>@Html.ActionLink("Terms and Conditions", "Terms", "Home")</li>
+                                        <li>>@Html.ActionLink("Delivery and Returns", "Terms", "Home")</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Check Order Status</label>
+                                    <input type="text" class="form-control form-control-sm" placeholder="ORDER NUMBER" aria-label="Order Number" aria-describedby="basic-addon2"><br />
+                                    <input type="text" class="form-control form-control-sm" placeholder="EMAIL ADDRESS" aria-label="Email" aria-describedby="basic-addon2"><br />
+                                    <a href="#!" class="btn btn-info btn-floating" style="background-color:darkslategrey;">SUBMIT</a>
+                                </div>
+                            </div>
+                            <hr style="border-color:darkslategrey;" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+  
+            <div class="container">
+                <div class="text-center center-block">
+                    Follow us on:
+                    <a href="https://www.facebook.com/HYPE-214168975688910/"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
+                    <a href="https://twitter.com/hype_durban?lang=en"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
+                    <a href="https://www.instagram.com/hype_online/"><i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i></a>
+                    <a href="mailto:sales@hype.com"><i id="social-em" class="fa fa-envelope-square fa-3x social"></i></a>
+                </div>
+                <hr>
+                <li>@Html.ActionLink("Newsletter", "SignUp", "Subscription")</li>
+
+                <p style="text-align:right;">HYPE&copy; @DateTime.Now.Year - by vitacode</p>
+            </div>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <!-- Social Footer, Single Coloured -->
+    <!-- Include Font Awesome Stylesheet in Header -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- // -->
+</body>
+</html>

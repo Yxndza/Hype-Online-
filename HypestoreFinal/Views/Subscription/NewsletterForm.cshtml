@@ -1,0 +1,36 @@
+﻿@model HypestoreFinal.Models.Subscription
+
+<div class="form-action show">
+    @*<h2>Join Our HypeProject</h2>*@
+    <p>
+        Sign up for newsletter
+    </p>
+
+    @using (Ajax.BeginForm("SignUp", new AjaxOptions { UpdateTargetId = "HypeProject-form-container" }))
+    {
+        <ul>
+            <li>
+                @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @placeholder = Html.DisplayNameFor(m => m.EmailAddress) } })
+                @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+            </li>
+            <li>
+                @Html.EnumDropDownListFor(model => model.Source, "How did you hear about us?", new { @class = ((Model != null && Model.Source.HasValue) ? "special" : "special empty") })
+                @Html.ValidationMessageFor(model => model.Source, "", new { @class = "text-danger" })
+            </li>
+            <li id="source-other-item">
+                @Html.EditorFor(model => model.SourceOther, new { htmlAttributes = new { @placeholder = Html.DisplayNameFor(m => m.SourceOther) } })
+                @Html.ValidationMessageFor(model => model.SourceOther, "", new { @class = "text-danger" })
+            </li>
+            <li>
+                @Html.EditorFor(model => model.Reason, new { htmlAttributes = new { @placeholder = Html.DisplayNameFor(m => m.Reason) } })
+            </li>
+            <li>
+                <input type="submit" value="Yes! Sign me up!" class="btn-primary" />
+            </li>
+        </ul>
+    }
+    @if (!string.IsNullOrWhiteSpace(@ViewBag.Message))
+    {
+        <div class="alert alert-@ViewBag.CssClass">@ViewBag.Message</div>
+    }
+</div>

@@ -1,0 +1,34 @@
+﻿@model IEnumerable<HypestoreFinal.Models.UserViewModel>
+@{
+    ViewBag.Title = "Users Assigned";
+}
+
+<h2>Users and Their Roles</h2>
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>
+            Username
+        </th>
+        <th>
+            Role Name
+        </th>
+    </tr>
+
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>
+                @user.Username
+            </td>
+            <td>
+                @user.RoleName
+            </td>
+        </tr>
+    }
+</table>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

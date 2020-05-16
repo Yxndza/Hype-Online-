@@ -1,0 +1,31 @@
+﻿@using HypestoreFinal.Helpers
+@model HypestoreFinal.Models.Department
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Department</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Department_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Department_Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back", "Index", new { Controller = "Departments" }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Edit", "Edit", new { Controller = "Departments", id = Model.Department_ID }, new { @class = "btn btn-default" })
+    @Html.DeleteLink("Delete", "Departments",
+    new { id = Model.Department_ID },
+    new { @class = "btn btn-danger", onclick = "return confirm('Are you sure?');" })
+</p>

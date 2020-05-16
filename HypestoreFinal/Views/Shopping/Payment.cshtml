@@ -1,0 +1,146 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Payment";
+}
+
+<h2 class="title text-center">Transaction Details </h2>
+
+<div class="row">
+    @*<div class="col-md-4">
+            <b>Account Details</b>
+            @{
+               MontclairModels.ApplicationDbContext db = new MontclairModels.ApplicationDbContext();
+
+            }
+            <table class="table">
+                <tr>
+                    <td>Name</td>
+                    <td>@db.Users.ToList().FirstOrDefault(x => x.UserName == @User.Identity.GetUserName()).UserName</td>
+                </tr>
+                <tr>
+                    <td>Cell Number</td>
+                    <td>@db.Users.ToList().FirstOrDefault(x => x.UserName == @User.Identity.GetUserName()).PhoneNumber</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>@db.Users.ToList().FirstOrDefault(x => x.UserName == @User.Identity.GetUserName()).Email</td>
+                </tr>
+            </table>
+        </div>*@
+    <div class="col-md-6">
+
+        <b>Transaction Details</b>
+        @{ HypestoreFinal.Models.Order order = (HypestoreFinal.Models.Order)ViewBag.Order; }
+
+        <table class="table">
+            <tr>
+                <td>Transaction No.</td>
+                <td>@order.OrderID</td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td>@order.status</td>
+            </tr>
+
+        </table>
+    </div>
+    <div class="col-md-4">
+
+        <b>Collection Details</b>
+        @{HypestoreFinal.Models.OrderAddress address = (HypestoreFinal.Models.OrderAddress)ViewBag.Address; }
+        @if (address != null)
+        {
+            <table class="table">
+                <tr>
+                    <td>Street</td>
+                    <td>@address.street</td>
+                </tr>
+                <tr>
+                    <td>City/Town</td>
+                    <td>@address.city</td>
+                </tr>
+                <tr>
+                    <td>Zipcode</td>
+                    <td>@address.zipcode</td>
+                </tr>
+            </table>
+        }
+        else
+        {
+            <hr />
+            <p>
+                Collect your order at our store.
+                <br />
+                <i class="fa fa-map-marker"></i>  99 Samora Machel St, Durban, 4001
+                <br />
+                <i class="fa fa-clock-o"></i>  8:30 am - 17:00 working hours
+                <br />
+            </p>
+        }
+
+    </div>
+    <div class="col-md-6">
+
+        <b>Items in this Purchase</b>
+        <table class="table">
+            <tr>
+                <th>
+                    Picture
+                </th>
+                <th>
+                    Item
+                </th>
+                <th>
+                    Qty
+                </th>
+                <th>
+                    Price
+                </th>
+            </tr>
+
+            @foreach (var item in (List<HypestoreFinal.Models.OrderItem>)ViewBag.Items)
+            {
+                <tr>
+                    <td>
+                        @if (item.Item.Image != null)
+                        {
+                            var base64 = Convert.ToBase64String(item.Item.Image);
+                            var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
+                            <img src="@imgSrc" width="60" height="70" />
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantity)
+                    </td>
+                    <td>
+                        R @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                </tr>
+            }
+
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    R @ViewBag.Total
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <a href="@Url.Action("Index", "Shopping")" class="btn btn-default"><i class="fa fa-arrow-left"></i> Back to shopping</a>
+                </td>
+                <td>
+                    <a href="@Url.Action("SecurePayment", "Shopping", new { id = order.OrderID})" class="btn btn-success"><i class="fa fa-lock"></i> Secure Payment</a>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+</div>

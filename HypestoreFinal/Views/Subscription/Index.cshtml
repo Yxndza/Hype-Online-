@@ -1,0 +1,14 @@
+﻿@model IEnumerable<HypestoreFinal.Models.Subscription>
+
+@{
+    ViewBag.Title = "HypeProject subscription";
+    Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
+
+}
+<br />
+<br />
+<h2>Subscribers</h2>
+
+<div id="subscription-list-container">
+    @Html.Partial("SubscriptionList", Model)
+</div>

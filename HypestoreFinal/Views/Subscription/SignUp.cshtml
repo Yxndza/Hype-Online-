@@ -1,0 +1,20 @@
+﻿@model HypestoreFinal.Models.Subscription
+
+@{
+    ViewBag.Title = "Sign up for newsletter";
+}
+<br />
+<br />
+<br />
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+    <div id="HypeProject-form-container">
+        @Html.Partial("NewsletterForm")
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
